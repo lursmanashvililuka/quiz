@@ -1,55 +1,59 @@
 import React, { useState } from "react";
 import "./App.css";
 
+
+
 function App() {
   const [showFinalResults, setFinalResults] = useState();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
 
+
   const questions = [
     {
-      text: "What is the capital of America?",
+      text: "სად მდებარეობს 47-ე საჯარო სკოლა?",
       options: [
-        { id: 0, text: "New York City", isCorrect: false },
-        { id: 1, text: "Boston", isCorrect: false },
-        { id: 2, text: "Santa Fe", isCorrect: false },
-        { id: 3, text: "Washington DC", isCorrect: true },
+        { id: 0, text: "აი ოპერასთან რო აუხვევ", isCorrect: true},
+        { id: 1, text: "ჩიტაძეზე", isCorrect: false },
+        { id: 2, text: "სოლოლაკში", isCorrect: false },
+        { id: 3, text: "მთაწმინდაზე", isCorrect: false },
       ],
     },
     {
-      text: "What year was the Constitution of America written?",
+      text: "რამდენი წლისაა ლონდარიძე ლორა?",
       options: [
-        { id: 0, text: "1787", isCorrect: true },
-        { id: 1, text: "1776", isCorrect: false },
-        { id: 2, text: "1774", isCorrect: false },
-        { id: 3, text: "1826", isCorrect: false },
+      
+        { id: 1, text: "ათასოთხმოცი", isCorrect: false },
+        { id: 2, text: "180", isCorrect: false },
+        { id: 3, text: "97-ის მერე არ ითვლის", isCorrect: false },
+        { id: 0, text: "ყველა", isCorrect: true },
+      ], 
+    },
+    {
+      text: "რატომ აქვს დალი ყარალაშვილს წითელი თმები?",
+      options: [
+        { id: 0, text: "უნდა და მაგიტო", isCorrect: true },
+        { id: 1, text: "გენში აქვს", isCorrect: false },
+        { id: 2, text: "ელექსირი საკუთახ თავზე გამოსცადა", isCorrect: false },
+        { id: 3, text: "პრესტიჟის ამბავია", isCorrect: false },
       ],
     },
     {
-      text: "Who was the second president of the US?",
+      text: "რატომ გაძვირდა ფასები ბუFეტში?",
       options: [
-        { id: 0, text: "John Adams", isCorrect: true },
-        { id: 1, text: "Paul Revere", isCorrect: false },
-        { id: 2, text: "Thomas Jefferson", isCorrect: false },
-        { id: 3, text: "Benjamin Franklin", isCorrect: false },
+        { id: 0, text: "ცხოვრებამ მოიტანა", isCorrect: false },
+        { id: 1, text: "დირექტორის მანქანა მოძველდა", isCorrect: true },
+        { id: 2, text: "იხდიან და...", isCorrect: false },
+        { id: 3, text: "რამე პრობლემაა?", isCorrect: false },
       ],
     },
     {
-      text: "What is the largest state in the US?",
+      text: "რამდენ ბავშვს უდრის მთელ სკოლაში ერთი ლურსმანა?",
       options: [
-        { id: 0, text: "California", isCorrect: false },
-        { id: 1, text: "Alaska", isCorrect: true },
-        { id: 2, text: "Texas", isCorrect: false },
-        { id: 3, text: "Montana", isCorrect: false },
-      ],
-    },
-    {
-      text: "Which of the following countries DO NOT border the US?",
-      options: [
-        { id: 0, text: "Canada", isCorrect: false },
-        { id: 1, text: "Russia", isCorrect: true },
-        { id: 2, text: "Cuba", isCorrect: true },
-        { id: 3, text: "Mexico", isCorrect: false },
+        { id: 0, text: "3", isCorrect: false },
+        { id: 1, text: "ეეეჰ...", isCorrect: true },
+        { id: 2, text: "1", isCorrect: true },
+        { id: 3, text: "2", isCorrect: false },
       ],
     },
   ];
@@ -60,6 +64,7 @@ function App() {
     }
     if (currentQuestion + 1 < questions.length) {
       setCurrentQuestion(currentQuestion + 1);
+     
     } else {
       setFinalResults(true);
     }
@@ -73,23 +78,25 @@ function App() {
 
   return (
     <div className="App">
-      <h1>USA QUIZ</h1>
+      <h1>QUIZ</h1>
+      
 
-      <h2>CURRENT SCORE : {score}</h2>
+      <h2>შენი ქულა: {score}</h2>
 
       {showFinalResults ? (
         <div className="finalresults">
-          <h1>FINAL RESULTS</h1>
-          <h2>{score} OUT IF {questions.length} CORRECT - ({(score/questions.length)*100}%) </h2>
+          <h1>საბოლოო შედეგები</h1>
+          <h2>{score} სწორი პასუხი {questions.length}-დან = ({(score/questions.length)*100}%) </h2>
+          <h3>#სხვაგზაარაგაქთორეშენცგადახვიდოდი</h3>
           <button onClick={()=> restartGame()}>RESTART</button>
         </div>
       ) : (
         <div className="questioncard">
           <h2>
-            QUESTION {currentQuestion + 1} OUT OF {questions.length}{" "}
+            კითხვა {currentQuestion + 1}    
           </h2>
           <h3 className="questiontext">{questions[currentQuestion].text}</h3>
-
+          
           <ul>
             {questions[currentQuestion].options.map((option) => {
               return (
