@@ -3,6 +3,7 @@ import "./App.css";
 
 
 
+
 function App() {
   const [showFinalResults, setFinalResults] = useState();
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -48,12 +49,12 @@ function App() {
       ],
     },
     {
-      text: "რამდენ ბავშვს უდრის მთელ სკოლაში ერთი ლურსმანა?",
+      text: "რას უნდა აწვებოდეს მოსწავლე?",
       options: [
-        { id: 0, text: "3", isCorrect: false },
-        { id: 1, text: "ეეეჰ...", isCorrect: true },
-        { id: 2, text: "1", isCorrect: true },
-        { id: 3, text: "2", isCorrect: false },
+        { id: 0, text: "თამაშს", isCorrect: false },
+        { id: 1, text: "რაც გაუსწორდება", isCorrect: true },
+        { id: 2, text: "სწავლას და რამე", isCorrect: true },
+        { id: 3, text: "ცხოვრებას", isCorrect: false },
       ],
     },
   ];
@@ -81,13 +82,13 @@ function App() {
       <h1>QUIZ</h1>
       
 
-      <h2>შენი ქულა: {score}</h2>
+      <h2> სწორი პასუხი: {score}</h2>
 
       {showFinalResults ? (
         <div className="finalresults">
           <h1>საბოლოო შედეგები</h1>
           <h2>{score} სწორი პასუხი {questions.length}-დან = ({(score/questions.length)*100}%) </h2>
-          <h3>#სხვაგზაარაგაქთორეშენცგადახვიდოდი</h3>
+          <h3 className="tag">#სხვაგზაარაგაქთორეშენცგადახვიდოდი</h3>
           <button onClick={()=> restartGame()}>RESTART</button>
         </div>
       ) : (
